@@ -1,17 +1,17 @@
 package org.example;
 
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-
 public class AdventureLetsGo {
 
-    static boolean end = false;
     static int karma = 0;
     static boolean trollclub = false;
     static boolean nett = true;
+    static boolean liebe = false;
+    static boolean vaterBoese = false;
+    static boolean prinzessinTreffen = false;
     static int waffe = 1;
 
     public static void main(String[] args) {
@@ -25,7 +25,7 @@ public class AdventureLetsGo {
         AdventureSteps.add("Vier");
         AdventureSteps.add("Fünf");
 
-        while (!end) {
+        while (AdventureSteps.size() > 0) {
 
             Collections.shuffle(AdventureSteps);
             String randomElement = AdventureSteps.get(0);
@@ -60,35 +60,34 @@ public class AdventureLetsGo {
                     System.out.println("step 5");
                     Vater();
                     AdventureSteps.remove("Fünf");
-                    end = true;
                 }
 
                 default -> System.out.println("wrong switch case, bro");
             }
-            System.out.println("step Drache");
-            Drache();
-            end = true;
         }
+        System.out.println("step Drache");
+        Drache();
+    }
+
+    public static String scan() {
+        Scanner scan = new Scanner(System.in);
+        return scan.nextLine().toLowerCase();
     }
 
     static void WegKreuzung() {
         System.out.println("Du stehst in einem Wald. Links geht es nicht weiter. Du kannst aber geradeaus oder rechts lang gehen.");
         System.out.println("Wofür entscheidest du dich?");
 
-        Scanner input = new Scanner(new InputStreamReader(System.in));
         String line = null;
 
         while (line == null) {
-            line = input.nextLine().toLowerCase();
+            line = scan();
 
             if (line.contains("geradeaus")) {
-                input.close();
                 System.out.println("Du gehst geradeaus!");
             } else if (line.contains("rechts")) {
-                input.close();
                 System.out.println("Du gehst rechts rum.");
             } else if (line.contains("dreh um") || line.contains("umdrehen") || line.contains("zurück")) {
-                input.close();
                 System.out.println("Du drehst dich um.");
             } else {
                 line = null;
@@ -110,41 +109,35 @@ public class AdventureLetsGo {
                 + "4. Der Wind");
         System.out.println("Wofür entscheidest du dich?");
 
-        Scanner input = new Scanner(new InputStreamReader(System.in));
         String line = null;
 
         while (line == null) {
-            line = input.nextLine().toLowerCase();
+            line = scan();
 
             if (line.contains("1") || (line.contains("eins"))) {
-                input.close();
                 karma += 1;
                 System.out.println("Wow bist du dumm, na dann geh mal weiter, mal sehen wie du dich schlägst!");
             } else if (line.contains("2") || (line.contains("zwei"))) {
-                input.close();
                 karma -= 1;
                 System.out.println("Interessante wahl, aber leider falsch.");
             } else if (line.contains("3") || (line.contains("drei"))) {
-                input.close();
                 karma -= 5;
                 System.out.println("Wenn du keine Lust auf Rätsel hast, dann wird dies eine sehr beschwerliche Reise!");
             } else if (line.contains("4") || (line.contains("vier"))) {
-                input.close();
                 karma += 5;
                 System.out.println("Du hast das Rätsel bestanden. Willst du unserem Trollclub beitreten?");
-                Scanner trollput = new Scanner(new InputStreamReader(System.in));
+
                 String trollline = null;
 
                 while (trollline == null) {
-                    trollline = trollput.nextLine().toLowerCase();
+                    trollline = scan();
 
-                    if (trollline.contains("ja") || (trollline.contains("yes") || (trollline.contains("1")))) {
-                        trollput.close();
+                    if (trollline.contains("ja") || (line.contains("yes") || (line.contains("1")))) {
+
                         karma += 1;
                         trollclub = true;
                         System.out.println("Oh man, endlich ein Mitglied in meinem Trollclub! Wir werden so viel spaß haben");
-                    } else if (trollline.contains("nein") || (trollline.contains("no")) || (trollline.contains("2"))) {
-                        trollput.close();
+                    } else if (line.contains("nein") || (line.contains("no")) || (line.contains("2"))) {
                         karma -= 1;
                         trollclub = false;
                         System.out.println("Warum will denn niemand dem Trollclub beitreten?");
@@ -170,54 +163,90 @@ public class AdventureLetsGo {
     }
 
     static void Huette() {
-        System.out.println("Du stehst in einem Wald. Links geht es nicht weiter. Du kannst aber geradeaus oder rechts lang gehen.");
+        System.out.println("Du stehst vor einer Hütte. Die Tür steht offen, du könntest hineingehen oder dem Weg um die Hütte folgen");
         System.out.println("Wofür entscheidest du dich?");
 
-        Scanner input = new Scanner(new InputStreamReader(System.in));
         String line = null;
 
         while (line == null) {
-            line = input.nextLine().toLowerCase();
+            line = scan();
 
-            if (line.contains("geradeaus")) {
-                input.close();
-                System.out.println("Du gehst geradeaus!");
-            } else if (line.contains("rechts")) {
-                input.close();
-                System.out.println("Du gehst rechts rum.");
-            } else if (line.contains("dreh um") || line.contains("umdrehen") || line.contains("zurück")) {
-                input.close();
-                System.out.println("Du drehst dich um.");
+            if (line.contains("rein")) {
+                WaffenWahl();
+                System.out.println("Du gehst hinein!");
+            } else if (line.contains("herum")) {
+                System.out.println("Du gehst herum.");
             } else {
                 line = null;
-                System.out.println("Das geht leider nicht. Möchtest du gerade aus gehen, schreibe 'geradeaus'." + System.lineSeparator()
-                        + "Möchtest du rechts entlang gehen, schreibe 'rechts rum'." + System.lineSeparator()
-                        + "Möchtest du umdrehen, schreibe 'umdrehen'." + System.lineSeparator()
+                System.out.println("Das geht leider nicht. Möchtest du hinein gehen, schreibe 'rein'." + System.lineSeparator()
+                        + "Möchtest du herum gehen, schreibe 'herum'." + System.lineSeparator()
                         + "Wofür entscheidest du dich?");
             }
+        }
+    }
 
+    static void WaffenWahl() {
+        System.out.println("In der Hütte findest du zwei Waffen" + System.lineSeparator()
+                + "1. Bogen" + System.lineSeparator()
+                + "2. Axt" + System.lineSeparator()
+                + "Du kannst nur höchstens einen Gegenstand mitnehmen.");
+        System.out.println("Für welchen Gegenstand entscheidest du dich?");
+
+        String line = null;
+
+        while (line == null) {
+            line = scan();
+
+            if (line.contains("1")) {
+                waffe = 1;
+                System.out.println("Du nimmst den Bogen!");
+            } else if (line.contains("2")) {
+                waffe = 2;
+                System.out.println("Du nimmst die Axt.");
+            } else if (line.contains("0")) {
+                karma += 2;
+                waffe = 3;
+                System.out.println("Du entschiedest dich den weg eines Pazifisten zu gehen.");
+            } else {
+                line = null;
+                System.out.println("Das geht leider nicht. Möchtest du den Bogen nehmen, schreibe '1'." + System.lineSeparator()
+                        + "Möchtest du die Act nehmen, schreibe '2'." + System.lineSeparator()
+                        + "Möchtest du keine Waffe nehmen, schreibe '3'." + System.lineSeparator()
+                        + "Wofür entscheidest du dich?");
+            }
         }
     }
 
     static void Prinzessin() {
-        System.out.println("Du stehst in einem Wald. Links geht es nicht weiter. Du kannst aber geradeaus oder rechts lang gehen.");
-        System.out.println("Wofür entscheidest du dich?");
+        prinzessinTreffen = true;
+        System.out.println("Du triffst eine wunderschöne Prinzessin." + System.lineSeparator()
+                + "Hallo Freund, kannst du mir helfen, mein Kleid hat sich in diesem Ast verfangen");
+        System.out.println("Deine Antwort:" + System.lineSeparator()
+                + "1. 'Ja natürlich helfe ich dir'" + System.lineSeparator()
+                + "2. Das is mir doch egal" + System.lineSeparator()
+                + "3. Die Prinzessin beleidigen" + System.lineSeparator()
+                + "4. Mit der Prinzessin flirten und sie befreien");
 
-        Scanner input = new Scanner(new InputStreamReader(System.in));
         String line = null;
 
         while (line == null) {
-            line = input.nextLine().toLowerCase();
+            line = scan();
 
-            if (line.contains("geradeaus")) {
-                input.close();
-                System.out.println("Du gehst geradeaus!");
-            } else if (line.contains("rechts")) {
-                input.close();
-                System.out.println("Du gehst rechts rum.");
-            } else if (line.contains("dreh um") || line.contains("umdrehen") || line.contains("zurück")) {
-                input.close();
-                System.out.println("Du drehst dich um.");
+            if (line.contains("1")) {
+                karma += 1;
+                System.out.println("Du befreist die Prinzessin, sie bedankt sich!");
+            } else if (line.contains("2")) {
+                karma -= 1;
+                vaterBoese = true;
+                System.out.println("Du gehst einfach weg, was mit der Prinzessin geschieht ist dir egal.");
+            } else if (line.contains("3") || line.contains("umdrehen") || line.contains("zurück")) {
+                karma -= 5;
+                vaterBoese = true;
+                System.out.println("Du drehst dich um, die Prinzessin weint, in ihrem Jammer, befreit sie sich selbst und rennt davon.");
+            } else if (line.contains("4")) {
+                karma += 2;
+                liebe = true;
+                System.out.println("Die Prinzessin verliebt sich in dich.");
             } else {
                 line = null;
                 System.out.println("Das geht leider nicht. Möchtest du gerade aus gehen, schreibe 'geradeaus'." + System.lineSeparator()
@@ -230,62 +259,49 @@ public class AdventureLetsGo {
     }
 
     static void AlterFreund() {
-        System.out.println("Du stehst in einem Wald. Links geht es nicht weiter. Du kannst aber geradeaus oder rechts lang gehen.");
-        System.out.println("Wofür entscheidest du dich?");
+        System.out.println("Du triffst einen alten Freund. Du erinnerst dich, dass du ihm noch 3 Gold schuldest.");
+        System.out.println("Er fragt dich 'wo ist eigentlich mein Gold mein Freund?'");
+        System.out.println("Antwort" + System.lineSeparator()
+                + "1. Hier dein Gold" + System.lineSeparator()
+                + "2. Hab ich nich" + System.lineSeparator()
+                + "3. clevere Ausrede, mit der du versuchst deinen Freund zu verarschen");
 
-        Scanner input = new Scanner(new InputStreamReader(System.in));
         String line = null;
 
         while (line == null) {
-            line = input.nextLine().toLowerCase();
+            line = scan();
 
-            if (line.contains("geradeaus")) {
-                input.close();
-                System.out.println("Du gehst geradeaus!");
-            } else if (line.contains("rechts")) {
-                input.close();
-                System.out.println("Du gehst rechts rum.");
-            } else if (line.contains("dreh um") || line.contains("umdrehen") || line.contains("zurück")) {
-                input.close();
-                System.out.println("Du drehst dich um.");
+            if (line.contains("1")) {
+                System.out.println("Du gibst deinem Freund das Gold und er bedankt sich");
+            } else if (line.contains("2")) {
+                System.out.println("Du gehst rechts rumhast das Gold nicht." + System.lineSeparator()
+                        + "'Keine Sorge, gib es mir einfach sobald du es hast'");
+            } else if (line.contains("3") || line.contains("umdrehen") || line.contains("zurück")) {
+                System.out.println("Du versuchst deinen Freund zu verarschen." + System.lineSeparator()
+                        + "'Du denkst du spielst Schach, aber du spielst kein Schach Digger. Du spielst Schach gegen dich selber!'");
             } else {
                 line = null;
-                System.out.println("Das geht leider nicht. Möchtest du gerade aus gehen, schreibe 'geradeaus'." + System.lineSeparator()
-                        + "Möchtest du rechts entlang gehen, schreibe 'rechts rum'." + System.lineSeparator()
-                        + "Möchtest du umdrehen, schreibe 'umdrehen'." + System.lineSeparator()
+                System.out.println("Das geht leider nicht. Möchtest du das Geld zurück geben, schreibe '1'." + System.lineSeparator()
+                        + "Möchtest du rechts kein Geld geben, schreibe '2'." + System.lineSeparator()
+                        + "Möchtest du deinen Freund verarschen, schreibe '3'." + System.lineSeparator()
                         + "Wofür entscheidest du dich?");
             }
-
         }
     }
 
     static void Vater() {
-        System.out.println("Du stehst in einem Wald. Links geht es nicht weiter. Du kannst aber geradeaus oder rechts lang gehen.");
-        System.out.println("Wofür entscheidest du dich?");
-
-        Scanner input = new Scanner(new InputStreamReader(System.in));
-        String line = null;
-
-        while (line == null) {
-            line = input.nextLine().toLowerCase();
-
-            if (line.contains("geradeaus")) {
-                input.close();
-                System.out.println("Du gehst geradeaus!");
-            } else if (line.contains("rechts")) {
-                input.close();
-                System.out.println("Du gehst rechts rum.");
-            } else if (line.contains("dreh um") || line.contains("umdrehen") || line.contains("zurück")) {
-                input.close();
-                System.out.println("Du drehst dich um.");
-            } else {
-                line = null;
-                System.out.println("Das geht leider nicht. Möchtest du gerade aus gehen, schreibe 'geradeaus'." + System.lineSeparator()
-                        + "Möchtest du rechts entlang gehen, schreibe 'rechts rum'." + System.lineSeparator()
-                        + "Möchtest du umdrehen, schreibe 'umdrehen'." + System.lineSeparator()
-                        + "Wofür entscheidest du dich?");
-            }
-
+        System.out.println("Du stehst in einem Dorf. Ein Mann kommt auf dich zu, er sagt");
+        if (!vaterBoese && !liebe) {
+            System.out.println("Hallo was geht, ich bin hier der Schmied");
+            System.out.println(prinzessinTreffen
+                    ? "Hier 3 Gold dafür das du meiner Tochter geholfen hast"
+                    : "Meine Tochter ist verschwunden, wenn du sie triffst, bitte hilf ihr. Sie ist die aktuelle Miss Velen");
+        } else if (vaterBoese && prinzessinTreffen) {
+            System.out.println("Du Arschloch hast meiner Tochter nicht geholfen. Verpiss dich");
+        } else if (liebe) {
+            System.out.println("Ah hallo mein Schwiegersohn, nimm diese 10 Gold");
+        } else {
+            System.out.println("Ich hab dir nix zu sagen");
         }
     }
 
@@ -294,20 +310,17 @@ public class AdventureLetsGo {
         System.out.println("Großer böser Drache neben der Prinzessin");
         System.out.println("Möchtest du die Prinzessin warnen?");
 
-        Scanner input = new Scanner(new InputStreamReader(System.in));
         String line = null;
 
         while (line == null) {
-            line = input.nextLine().toLowerCase();
+            line = scan();
 
             if (line.contains("ja") || line.contains("yes") || line.contains("1")) {
-                input.close();
                 karma += 1;
                 System.out.println(nett
                         ? "Du warnst die Prinzessin und sie kann ein stück vom Drachen entkommen"
                         : "Die Prinzessin bemerkt dich und macht einen Schritt von dir weg. Sie tritt dem Drachen auf den Fuß und dieser frisst sie");
             } else if (line.contains("nein") || line.contains("no") || line.contains("2")) {
-                input.close();
                 karma -= 5;
                 System.out.println("Die Prinzessin bemerkt dich nicht, aber leider auch nicht den Drachen");
             } else {
@@ -327,20 +340,17 @@ public class AdventureLetsGo {
             System.out.println("Möchtest du den Drachen Angreifen?");
         }
 
-        Scanner drachput = new Scanner(new InputStreamReader(System.in));
         String drachline = null;
 
         while (drachline == null) {
-            drachline = drachput.nextLine().toLowerCase();
+            drachline = scan();
 
             if (drachline.contains("ja") || drachline.contains("yes") || drachline.contains("1")) {
-                drachput.close();
                 karma += 1;
                 System.out.println(karma > 10
                         ? "Du erschlägst den Drachen"
                         : "Der Drache frisst dich");
             } else if (drachline.contains("nein") || drachline.contains("no") || drachline.contains("2")) {
-                drachput.close();
                 karma -= 1;
                 System.out.println("Der Drache schlägt nach dir.");
                 System.out.println(karma < 0 ? "Du kannst ausweichen" : "Du stirbst");
