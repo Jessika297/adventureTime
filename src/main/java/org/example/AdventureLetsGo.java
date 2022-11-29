@@ -7,23 +7,23 @@ import java.util.Scanner;
 public class AdventureLetsGo {
 
     static int karma = 0;
-    static boolean trollclub = false;
-    static boolean nett = true;
-    static boolean liebe = false;
-    static boolean vaterBoese = false;
-    static boolean prinzessinTreffen = false;
-    static int waffe = 1;
+    static boolean gnomeClub = false;
+    static boolean kind = true;
+    static boolean love = false;
+    static boolean fatherHate = false;
+    static boolean metPrincess = false;
+    static int weapon = 0;
 
     public static void main(String[] args) {
 
         ArrayList<String> AdventureSteps = new ArrayList<>();
 
-        AdventureSteps.add("Null");
-        AdventureSteps.add("Eins");
-        AdventureSteps.add("Zwei");
-        AdventureSteps.add("Drei");
-        AdventureSteps.add("Vier");
-        AdventureSteps.add("Fünf");
+        AdventureSteps.add("Crossroad");
+        AdventureSteps.add("GnomeRiddle");
+        AdventureSteps.add("Hut");
+        AdventureSteps.add("Princess");
+        AdventureSteps.add("OldFriend");
+        AdventureSteps.add("Father");
 
         while (AdventureSteps.size() > 0) {
 
@@ -31,42 +31,43 @@ public class AdventureLetsGo {
             String randomElement = AdventureSteps.get(0);
 
             switch (randomElement) {
-                case "Null" -> {
-                    System.out.println("step 0");
-                    WegKreuzung();
-                    AdventureSteps.remove("Null");
+                case "Crossroad" -> {
+                    crossroad();
+                    AdventureSteps.remove("Crossroad");
+                    System.out.println("Du gehst weiter den Weg entlang, für den du dich entschieden hast");
                 }
-                case "Eins" -> {
-                    System.out.println("step 1");
-                    TrollRaetsel();
-                    AdventureSteps.remove("Eins");
+                case "GnomeRiddle" -> {
+                    gnomeRiddle();
+                    AdventureSteps.remove("GnomeRiddle");
+                    System.out.println("Puh, das war aber ein schwieriges Rätsel. Du gehst weiter und hoffst nicht nochmal eins lösen zu müssen." + System.lineSeparator());
                 }
-                case "Zwei" -> {
-                    System.out.println("step 2");
-                    Huette();
-                    AdventureSteps.remove("Zwei"); //remove by value not index
+                case "Hut" -> {
+                    hut();
+                    AdventureSteps.remove("Hut");
+                    System.out.println("Unsicher, ob du dich richtig entschieden hast, gehst du weiter. In der Ferne lässt sich etwas erkennen." + System.lineSeparator());
                 }
-                case "Drei" -> {
-                    System.out.println("step 3");
-                    Prinzessin();
-                    AdventureSteps.remove("Drei");
+                case "Princess" -> {
+                    princess();
+                    AdventureSteps.remove("Princess");
+                    System.out.println("Die Frage, ob es die Prinzessin wohl nach Hause schafft beschleicht dich, doch du schüttelst den Gedanken ab und gehst weiter" + System.lineSeparator());
                 }
-                case "Vier" -> {
-                    System.out.println("step 4");
-                    AlterFreund();
-                    AdventureSteps.remove("Vier");
+                case "OldFriend" -> {
+                    oldFriend();
+                    AdventureSteps.remove("OldFriend");
+                    System.out.println("Einen alten Freund zu treffen ist immer erstmal schön, auch wenn mal ein unangenehmes Thema aufkommt. Voller elan stürtz du dich weiter ins Abenteuer");
                 }
-                case "Fünf" -> {
-                    System.out.println("step 5");
-                    Vater();
-                    AdventureSteps.remove("Fünf");
+                case "Father" -> {
+                    father();
+                    AdventureSteps.remove("Father");
+                    System.out.println("Eigentlich ist das Dorf ganz gemütlich, aber du fühlst dich noch nicht bereit sesshaft zu werden und so machst du dich wieder auf den Weg.");
                 }
 
-                default -> System.out.println("wrong switch case, bro");
+                default ->
+                        System.out.println("Das Abenteuer ist zu einem abrupten Ende gekommen. Wenn du möchtest kannst du es neu starten und dem Autor über den Fehler informieren");
             }
         }
-        System.out.println("step Drache");
-        Drache();
+        System.out.println(System.lineSeparator() + "Als du weiter gehst, beginnt epische Kampfmusik im Hintergrund");
+        dragon();
     }
 
     public static String scan() {
@@ -74,9 +75,9 @@ public class AdventureLetsGo {
         return scan.nextLine().toLowerCase();
     }
 
-    static void WegKreuzung() {
+    static void crossroad() {
         System.out.println("Du stehst in einem Wald. Links geht es nicht weiter. Du kannst aber geradeaus oder rechts lang gehen.");
-        System.out.println("Wofür entscheidest du dich?");
+        System.out.println("Wofür entscheidest du dich?" + "\n");
 
         String line = null;
 
@@ -94,19 +95,19 @@ public class AdventureLetsGo {
                 System.out.println("Das geht leider nicht. Möchtest du gerade aus gehen, schreibe 'geradeaus'." + System.lineSeparator()
                         + "Möchtest du rechts entlang gehen, schreibe 'rechts rum'." + System.lineSeparator()
                         + "Möchtest du umdrehen, schreibe 'umdrehen'." + System.lineSeparator()
-                        + "Wofür entscheidest du dich?");
+                        + "Wofür entscheidest du dich?" + "\n");
             }
         }
     }
 
-    static void TrollRaetsel() {
-        System.out.println("Du kommst zu einer Brücke. Ein Troll steht dort.");
-        System.out.println("Was kann man nicht sehen aber hören und fühlen.");
+    static void gnomeRiddle() {
+        System.out.println("Du kommst zu einer Brücke. Ein Troll steht dort und stellt dir folgendes Rätsel:" + System.lineSeparator()
+                + "Was kann man nicht sehen aber hören und fühlen." + "\n");
         System.out.println("Wähle deine Antwort" + System.lineSeparator()
                 + "1. Babys" + System.lineSeparator()
                 + "2. Ziegen" + System.lineSeparator()
                 + "3. Was soll denn diese scheiß Rätselß Piss dich du Opfer" + System.lineSeparator()
-                + "4. Der Wind");
+                + "4. Der Wind" + "\n");
         System.out.println("Wofür entscheidest du dich?");
 
         String line = null;
@@ -116,16 +117,16 @@ public class AdventureLetsGo {
 
             if (line.contains("1") || (line.contains("eins"))) {
                 karma += 1;
-                System.out.println("Wow bist du dumm, na dann geh mal weiter, mal sehen wie du dich schlägst!");
+                System.out.println("Wow bist du dumm, na dann geh mal weiter, mal sehen wie du dich schlägst!" + "\n");
             } else if (line.contains("2") || (line.contains("zwei"))) {
                 karma -= 1;
                 System.out.println("Interessante wahl, aber leider falsch.");
             } else if (line.contains("3") || (line.contains("drei"))) {
                 karma -= 5;
-                System.out.println("Wenn du keine Lust auf Rätsel hast, dann wird dies eine sehr beschwerliche Reise!");
+                System.out.println("Wenn du keine Lust auf Rätsel hast, dann wird dies eine sehr beschwerliche Reise!" + "\n");
             } else if (line.contains("4") || (line.contains("vier"))) {
                 karma += 5;
-                System.out.println("Du hast das Rätsel bestanden. Willst du unserem Trollclub beitreten?");
+                System.out.println("Du hast das Rätsel bestanden. Willst du unserem Trollclub beitreten?" + "\n");
 
                 String trollline = null;
 
@@ -135,20 +136,20 @@ public class AdventureLetsGo {
                     if (trollline.contains("ja") || (line.contains("yes") || (line.contains("1")))) {
 
                         karma += 1;
-                        trollclub = true;
-                        System.out.println("Oh man, endlich ein Mitglied in meinem Trollclub! Wir werden so viel spaß haben");
+                        gnomeClub = true;
+                        System.out.println("Oh man, endlich ein Mitglied in meinem Trollclub! Wir werden so viel spaß haben" + "\n");
                     } else if (line.contains("nein") || (line.contains("no")) || (line.contains("2"))) {
                         karma -= 1;
-                        trollclub = false;
-                        System.out.println("Warum will denn niemand dem Trollclub beitreten?");
+                        gnomeClub = false;
+                        System.out.println("Warum will denn niemand dem Trollclub beitreten?" + "\n");
                     } else {
                         trollline = null;
                         System.out.println("Was soll das heißen?" + System.lineSeparator()
                                 + "Möchtest du beitreten, schreibe 'ja'." + System.lineSeparator()
                                 + "Möchtest du nicht beitreten, schreibe 'nein'." + System.lineSeparator()
-                                + "Wofür entscheidest du dich?");
+                                + "Wofür entscheidest du dich?" + "\n");
                     }
-                    System.out.println("Na dann mal ab mit dir");
+                    System.out.println("Na dann mal ab mit dir" + "\n");
                 }
             } else {
                 line = null;
@@ -156,15 +157,15 @@ public class AdventureLetsGo {
                         + "1. Babys" + System.lineSeparator()
                         + "2. Ziegen" + System.lineSeparator()
                         + "3. Was soll denn diese scheiß Rätselß Piss dich du Opfer" + System.lineSeparator()
-                        + "4. Der Wind");
+                        + "4. Der Wind" + "\n");
             }
 
         }
     }
 
-    static void Huette() {
+    static void hut() {
         System.out.println("Du stehst vor einer Hütte. Die Tür steht offen, du könntest hineingehen oder dem Weg um die Hütte folgen");
-        System.out.println("Wofür entscheidest du dich?");
+        System.out.println("Wofür entscheidest du dich?" + "\n");
 
         String line = null;
 
@@ -172,24 +173,24 @@ public class AdventureLetsGo {
             line = scan();
 
             if (line.contains("rein")) {
-                WaffenWahl();
-                System.out.println("Du gehst hinein!");
+                System.out.println("Du gehst hinein!" + "\n");
+                weaponChoice();
             } else if (line.contains("herum")) {
-                System.out.println("Du gehst herum.");
+                System.out.println("Du gehst herum." + "\n");
             } else {
                 line = null;
                 System.out.println("Das geht leider nicht. Möchtest du hinein gehen, schreibe 'rein'." + System.lineSeparator()
                         + "Möchtest du herum gehen, schreibe 'herum'." + System.lineSeparator()
-                        + "Wofür entscheidest du dich?");
+                        + "Wofür entscheidest du dich?" + "\n");
             }
         }
     }
 
-    static void WaffenWahl() {
+    static void weaponChoice() {
         System.out.println("In der Hütte findest du zwei Waffen" + System.lineSeparator()
                 + "1. Bogen" + System.lineSeparator()
                 + "2. Axt" + System.lineSeparator()
-                + "Du kannst nur höchstens einen Gegenstand mitnehmen.");
+                + "Du kannst nur höchstens einen Gegenstand mitnehmen." + "\n");
         System.out.println("Für welchen Gegenstand entscheidest du dich?");
 
         String line = null;
@@ -198,34 +199,34 @@ public class AdventureLetsGo {
             line = scan();
 
             if (line.contains("1")) {
-                waffe = 1;
-                System.out.println("Du nimmst den Bogen!");
+                weapon = 1;
+                System.out.println("Du nimmst den Bogen!" + "\n");
             } else if (line.contains("2")) {
-                waffe = 2;
-                System.out.println("Du nimmst die Axt.");
+                weapon = 2;
+                System.out.println("Du nimmst die Axt." + "\n");
             } else if (line.contains("0")) {
                 karma += 2;
-                waffe = 3;
-                System.out.println("Du entschiedest dich den weg eines Pazifisten zu gehen.");
+                weapon = 3;
+                System.out.println("Du entschiedest dich den weg eines Pazifisten zu gehen." + "\n");
             } else {
                 line = null;
                 System.out.println("Das geht leider nicht. Möchtest du den Bogen nehmen, schreibe '1'." + System.lineSeparator()
                         + "Möchtest du die Act nehmen, schreibe '2'." + System.lineSeparator()
                         + "Möchtest du keine Waffe nehmen, schreibe '3'." + System.lineSeparator()
-                        + "Wofür entscheidest du dich?");
+                        + "Wofür entscheidest du dich?" + "\n");
             }
         }
     }
 
-    static void Prinzessin() {
-        prinzessinTreffen = true;
+    static void princess() {
+        metPrincess = true;
         System.out.println("Du triffst eine wunderschöne Prinzessin." + System.lineSeparator()
-                + "Hallo Freund, kannst du mir helfen, mein Kleid hat sich in diesem Ast verfangen");
+                + "Hallo Freund, kannst du mir helfen, mein Kleid hat sich in diesem Ast verfangen" + "\n");
         System.out.println("Deine Antwort:" + System.lineSeparator()
                 + "1. 'Ja natürlich helfe ich dir'" + System.lineSeparator()
                 + "2. Das is mir doch egal" + System.lineSeparator()
                 + "3. Die Prinzessin beleidigen" + System.lineSeparator()
-                + "4. Mit der Prinzessin flirten und sie befreien");
+                + "4. Mit der Prinzessin flirten und sie befreien" + "\n");
 
         String line = null;
 
@@ -234,37 +235,37 @@ public class AdventureLetsGo {
 
             if (line.contains("1")) {
                 karma += 1;
-                System.out.println("Du befreist die Prinzessin, sie bedankt sich!");
+                System.out.println("Du befreist die Prinzessin, sie bedankt sich!" + "\n");
             } else if (line.contains("2")) {
                 karma -= 1;
-                vaterBoese = true;
-                System.out.println("Du gehst einfach weg, was mit der Prinzessin geschieht ist dir egal.");
+                fatherHate = true;
+                System.out.println("Du gehst einfach weg, was mit der Prinzessin geschieht ist dir egal." + "\n");
             } else if (line.contains("3") || line.contains("umdrehen") || line.contains("zurück")) {
                 karma -= 5;
-                vaterBoese = true;
-                System.out.println("Du drehst dich um, die Prinzessin weint, in ihrem Jammer, befreit sie sich selbst und rennt davon.");
+                fatherHate = true;
+                System.out.println("Du drehst dich um, die Prinzessin weint, in ihrem Jammer, befreit sie sich selbst und rennt davon." + "\n");
             } else if (line.contains("4")) {
                 karma += 2;
-                liebe = true;
-                System.out.println("Die Prinzessin verliebt sich in dich.");
+                love = true;
+                System.out.println("Die Prinzessin verliebt sich in dich und geht glücklich davon." + "\n");
             } else {
                 line = null;
                 System.out.println("Das geht leider nicht. Möchtest du gerade aus gehen, schreibe 'geradeaus'." + System.lineSeparator()
                         + "Möchtest du rechts entlang gehen, schreibe 'rechts rum'." + System.lineSeparator()
                         + "Möchtest du umdrehen, schreibe 'umdrehen'." + System.lineSeparator()
-                        + "Wofür entscheidest du dich?");
+                        + "Wofür entscheidest du dich?" + "\n");
             }
 
         }
     }
 
-    static void AlterFreund() {
-        System.out.println("Du triffst einen alten Freund. Du erinnerst dich, dass du ihm noch 3 Gold schuldest.");
-        System.out.println("Er fragt dich 'wo ist eigentlich mein Gold mein Freund?'");
+    static void oldFriend() {
+        System.out.println("Du triffst einen alten Freund. Du erinnerst dich, dass du ihm noch 3 Gold schuldest." + System.lineSeparator()
+                + "Er fragt dich 'wo ist eigentlich mein Gold mein Freund?'" + "\n");
         System.out.println("Antwort" + System.lineSeparator()
                 + "1. Hier dein Gold" + System.lineSeparator()
                 + "2. Hab ich nich" + System.lineSeparator()
-                + "3. clevere Ausrede, mit der du versuchst deinen Freund zu verarschen");
+                + "3. clevere Ausrede, mit der du versuchst deinen Freund zu verarschen" + "\n");
 
         String line = null;
 
@@ -272,42 +273,41 @@ public class AdventureLetsGo {
             line = scan();
 
             if (line.contains("1")) {
-                System.out.println("Du gibst deinem Freund das Gold und er bedankt sich");
+                System.out.println("Du gibst deinem Freund das Gold und er bedankt sich" + "\n");
             } else if (line.contains("2")) {
-                System.out.println("Du gehst rechts rumhast das Gold nicht." + System.lineSeparator()
-                        + "'Keine Sorge, gib es mir einfach sobald du es hast'");
+                System.out.println("Du hast das Gold nicht." + System.lineSeparator()
+                        + "'Keine Sorge, gib es mir einfach sobald du es hast'" + "\n");
             } else if (line.contains("3") || line.contains("umdrehen") || line.contains("zurück")) {
                 System.out.println("Du versuchst deinen Freund zu verarschen." + System.lineSeparator()
-                        + "'Du denkst du spielst Schach, aber du spielst kein Schach Digger. Du spielst Schach gegen dich selber!'");
+                        + "'Du denkst du spielst Schach, aber du spielst kein Schach Digger. Du spielst Schach gegen dich selber!'" + "\n");
             } else {
                 line = null;
                 System.out.println("Das geht leider nicht. Möchtest du das Geld zurück geben, schreibe '1'." + System.lineSeparator()
                         + "Möchtest du rechts kein Geld geben, schreibe '2'." + System.lineSeparator()
                         + "Möchtest du deinen Freund verarschen, schreibe '3'." + System.lineSeparator()
-                        + "Wofür entscheidest du dich?");
+                        + "Wofür entscheidest du dich?" + "\n");
             }
         }
     }
 
-    static void Vater() {
-        System.out.println("Du stehst in einem Dorf. Ein Mann kommt auf dich zu, er sagt");
-        if (!vaterBoese && !liebe) {
-            System.out.println("Hallo was geht, ich bin hier der Schmied");
-            System.out.println(prinzessinTreffen
-                    ? "Hier 3 Gold dafür das du meiner Tochter geholfen hast"
-                    : "Meine Tochter ist verschwunden, wenn du sie triffst, bitte hilf ihr. Sie ist die aktuelle Miss Velen");
-        } else if (vaterBoese && prinzessinTreffen) {
-            System.out.println("Du Arschloch hast meiner Tochter nicht geholfen. Verpiss dich");
-        } else if (liebe) {
-            System.out.println("Ah hallo mein Schwiegersohn, nimm diese 10 Gold");
+    static void father() {
+        System.out.println("Du stehst in einem Dorf. Ein Mann kommt auf dich zu, er sagt" + "\n");
+        if (!fatherHate && !love) {
+            System.out.println("Hallo was geht, ich bin hier der Schmied" + System.lineSeparator());
+            System.out.println(metPrincess
+                    ? "Hier 3 Gold dafür das du meiner Tochter geholfen hast" + "\n"
+                    : "Meine Tochter ist verschwunden, wenn du sie triffst, bitte hilf ihr. Sie ist die aktuelle Miss Velen" + "\n");
+        } else if (fatherHate && metPrincess) {
+            System.out.println("Du Arschloch hast meiner Tochter nicht geholfen. Verpiss dich" + "\n");
+        } else if (love) {
+            System.out.println("Ah hallo mein Schwiegersohn, nimm diese 10 Gold" + "\n");
         } else {
-            System.out.println("Ich hab dir nix zu sagen");
+            System.out.println("Ich hab dir nix zu sagen" + "\n");
         }
     }
 
-
-    static void Drache() {
-        System.out.println("Großer böser Drache neben der Prinzessin");
+    static void dragon() {
+        System.out.println("Ein großer böser Drache steht neben der Prinzessin");
         System.out.println("Möchtest du die Prinzessin warnen?");
 
         String line = null;
@@ -316,28 +316,28 @@ public class AdventureLetsGo {
             line = scan();
 
             if (line.contains("ja") || line.contains("yes") || line.contains("1")) {
-                karma += 1;
-                System.out.println(nett
-                        ? "Du warnst die Prinzessin und sie kann ein stück vom Drachen entkommen"
-                        : "Die Prinzessin bemerkt dich und macht einen Schritt von dir weg. Sie tritt dem Drachen auf den Fuß und dieser frisst sie");
+                karma += 2;
+                System.out.println(kind
+                        ? "Du warnst die Prinzessin und sie kann ein stück vom Drachen entkommen" + "\n"
+                        : "Die Prinzessin bemerkt dich und macht einen Schritt von dir weg. Sie tritt dem Drachen auf den Fuß und dieser frisst sie" + "\n");
             } else if (line.contains("nein") || line.contains("no") || line.contains("2")) {
                 karma -= 5;
-                System.out.println("Die Prinzessin bemerkt dich nicht, aber leider auch nicht den Drachen");
+                System.out.println("Die Prinzessin bemerkt dich nicht, aber leider auch nicht den Drachen. Sie ist in großer Gefahr!" + "\n");
             } else {
                 line = null;
                 System.out.println("Das geht leider nicht. Möchtest du die Prinzessin warnen, schreibe 'ja'." + System.lineSeparator()
-                        + "Möchtest du sie nicht warenn, schreibe 'nein'." + System.lineSeparator()
-                        + "Wofür entscheidest du dich?");
+                        + "Möchtest du sie nicht warnen, schreibe 'nein'." + System.lineSeparator()
+                        + "Wofür entscheidest du dich?" + "\n");
             }
         }
 
-        System.out.println("Großer böser Drache sieht wütend aus");
-        if (waffe == 1) {
-            System.out.println("Möchtest du deinen Bogen zum Angriff nutzen?");
-        } else if (waffe == 2) {
-            System.out.println("Möchtest du deine Axt zum Angriff nutzen?");
+        System.out.println("Der große böse Drache sieht sehr wütend aus. Er macht einen Schritt auf dich zu." + "\n");
+        if (weapon == 1) {
+            System.out.println("Möchtest du deinen Bogen zum Angriff nutzen?" + "\n");
+        } else if (weapon == 2) {
+            System.out.println("Möchtest du deine Axt zum Angriff nutzen?" + "\n");
         } else {
-            System.out.println("Möchtest du den Drachen Angreifen?");
+            System.out.println("Möchtest du den Drachen Angreifen?" + "\n");
         }
 
         String drachline = null;
@@ -347,18 +347,23 @@ public class AdventureLetsGo {
 
             if (drachline.contains("ja") || drachline.contains("yes") || drachline.contains("1")) {
                 karma += 1;
-                System.out.println(karma > 10
-                        ? "Du erschlägst den Drachen"
-                        : "Der Drache frisst dich");
+                System.out.println(karma > 5
+                        ? "Du erschlägst den Drachen" + "\n"
+                        : "Der Drache frisst dich" + "\n");
             } else if (drachline.contains("nein") || drachline.contains("no") || drachline.contains("2")) {
                 karma -= 1;
-                System.out.println("Der Drache schlägt nach dir.");
-                System.out.println(karma < 0 ? "Du kannst ausweichen" : "Du stirbst");
+                System.out.println("Der Drache schlägt nach dir." + "\n");
+                if (karma < 0) {
+                    System.out.println("Der Drache zerfetzt dich in Tausend kleine Stücke" + "\n");
+                } else {
+                    System.out.println("Du kannst ausweichen" + "\n");
+                    System.out.println("Du rennst davon und versteckst dich" + (gnomeClub ? "im Trollclub" + "\n" : "im Dorf" + "\n"));
+                }
             } else {
                 drachline = null;
                 System.out.println("Das geht leider nicht. Du möchtest angreifen? Schreibe 'ja'." + System.lineSeparator()
                         + "Möchtest du nicht angreifen, schreibe 'nein'." + System.lineSeparator()
-                        + "Wofür entscheidest du dich?");
+                        + "Wofür entscheidest du dich?" + "\n");
             }
         }
     }
