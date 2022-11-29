@@ -204,7 +204,7 @@ public class AdventureLetsGo {
                 + ("""
                     _
                 .-'` |___________________________//////
-                `'-._|                           \\\\\\\\\\\\""")
+                `'-._|                           \\\\\\\\\\\\""") + System.lineSeparator()
                 + "2. Axt" + System.lineSeparator()
                 + ("""
                  _,-,
@@ -258,9 +258,6 @@ public class AdventureLetsGo {
                      /          \\
                     /            \\
                    @@@@@@@@@@@@@@@@
-                  /                \\
-                 /                  \\
-                @@@@@@@@@@@@@@@@@@@@@@
                         v  v""");
         System.out.println("Du triffst eine wunderschöne Prinzessin." + System.lineSeparator()
                 + "Hallo Freund, kannst du mir helfen, mein Kleid hat sich in diesem Ast verfangen" + "\n");
