@@ -165,6 +165,7 @@ public class AdventureLetsGo {
     }
 
     static void hut() {
+        System.out.println("Du stehst vor einer Hütte. Die Tür steht offen, du könntest hineingehen oder dem Weg um die Hütte folgen");
         System.out.println("""
                           _
                         _|=|__________
@@ -176,7 +177,6 @@ public class AdventureLetsGo {
                     ()||__||_|__|_||__||()
                    ( )|-|-|-|====|-|-|-|( )
                 jgs^^^^^^^^^^====^^^^^^^^^^^""");
-        System.out.println("Du stehst vor einer Hütte. Die Tür steht offen, du könntest hineingehen oder dem Weg um die Hütte folgen");
         System.out.println("Wofür entscheidest du dich?" + "\n");
 
         String line = null;
@@ -199,20 +199,20 @@ public class AdventureLetsGo {
     }
 
     static void weaponChoice() {
-        System.out.println("""
+        System.out.println("In der Hütte findest du zwei Waffen" + System.lineSeparator()
+                + "1. Bogen" + System.lineSeparator()
+                + ("""
+                    _
+                .-'` |___________________________//////
+                `'-._|                           \\\\\\\\\\\\""")
+                + "2. Axt" + System.lineSeparator()
+                + ("""
                  _,-,
                 T_  |
                 ||`-'
                 ||
                 ||
-                ~~""");
-        System.out.println("""
-                    _
-                .-'` |___________________________//////
-                `'-._|                           \\\\\\\\\\\\""");
-        System.out.println("In der Hütte findest du zwei Waffen" + System.lineSeparator()
-                + "1. Bogen" + System.lineSeparator()
-                + "2. Axt" + System.lineSeparator()
+                ~~""")
                 + "Du kannst nur höchstens einen Gegenstand mitnehmen." + "\n");
         System.out.println("Für welchen Gegenstand entscheidest du dich?");
 
@@ -297,11 +297,12 @@ public class AdventureLetsGo {
                         + "Möchtest du umdrehen, schreibe 'umdrehen'." + System.lineSeparator()
                         + "Wofür entscheidest du dich?" + "\n");
             }
-
         }
     }
 
     static void oldFriend() {
+        System.out.println("Du triffst einen alten Freund. Du erinnerst dich, dass du ihm noch 3 Gold schuldest." + System.lineSeparator()
+                + "Er fragt dich 'wo ist eigentlich mein Gold mein Freund?'" + "\n");
         System.out.println("""
                   __      _                _    \s
                  / _|    (_)              | |   \s
@@ -311,8 +312,6 @@ public class AdventureLetsGo {
                 |_| |_|  |_|\\___|_| |_|\\__,_|___/
                                                 \s
                                                 \s""");
-        System.out.println("Du triffst einen alten Freund. Du erinnerst dich, dass du ihm noch 3 Gold schuldest." + System.lineSeparator()
-                + "Er fragt dich 'wo ist eigentlich mein Gold mein Freund?'" + "\n");
         System.out.println("Antwort" + System.lineSeparator()
                 + "1. Hier dein Gold" + System.lineSeparator()
                 + "2. Hab ich nicht" + System.lineSeparator()
@@ -342,18 +341,6 @@ public class AdventureLetsGo {
     }
 
     static void father() {
-        System.out.println("""
-                ~         ~~          __
-                                  _T      .,,.    ~--~ ^^
-                            ^^   // \\                    ~
-                                 ][O]    ^^      ,-~ ~
-                              /''-I_I         _II____
-                           __/_  /   \\ ______/ ''   /'\\_,__
-                             | II--'''' \\,--:--..,_/,.-{ },
-                           ; '/__\\,.--';|   |[] .-.| O{ _ }
-                           :' |  | []  -|   ''--:.;[,.'\\,/
-                           '  |[]|,.--'' '',   ''-,.    |
-                             ..    ..-''    ;       ''. '""");
         System.out.println("Du stehst in einem Dorf. Ein Mann kommt auf dich zu, er sagt" + "\n");
         if (!fatherHate && !love) {
             System.out.println("Hallo was geht, ich bin hier der Schmied" + System.lineSeparator());
@@ -367,6 +354,18 @@ public class AdventureLetsGo {
         } else {
             System.out.println("Ich hab dir nix zu sagen" + "\n");
         }
+        System.out.println("""
+                ~         ~~          __
+                                  _T      .,,.    ~--~ ^^
+                            ^^   // \\                    ~
+                                 ][O]    ^^      ,-~ ~
+                              /''-I_I         _II____
+                           __/_  /   \\ ______/ ''   /'\\_,__
+                             | II--'''' \\,--:--..,_/,.-{ },
+                           ; '/__\\,.--';|   |[] .-.| O{ _ }
+                           :' |  | []  -|   ''--:.;[,.'\\,/
+                           '  |[]|,.--'' '',   ''-,.    |
+                             ..    ..-''    ;       ''. '""");
     }
 
     static void dragon() {
