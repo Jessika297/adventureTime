@@ -68,6 +68,7 @@ public class AdventureLetsGo {
         }
         System.out.println(System.lineSeparator() + "Als du weiter gehst, beginnt epische Kampfmusik im Hintergrund");
         dragon();
+        System.out.println("The End");
     }
 
     public static String scan() {
@@ -84,11 +85,11 @@ public class AdventureLetsGo {
         while (line == null) {
             line = scan();
 
-            if (line.contains("geradeaus")) {
+            if (line.contains("geradeaus") || line.contains("grade") || line.contains("1")) {
                 System.out.println("Du gehst geradeaus!");
-            } else if (line.contains("rechts")) {
+            } else if (line.contains("rechts") || line.contains("2")) {
                 System.out.println("Du gehst rechts rum.");
-            } else if (line.contains("dreh um") || line.contains("umdrehen") || line.contains("zurück")) {
+            } else if (line.contains("dreh um") || line.contains("umdrehen") || line.contains("zurück") || line.contains("3")) {
                 System.out.println("Du drehst dich um.");
             } else {
                 line = null;
@@ -104,8 +105,8 @@ public class AdventureLetsGo {
         System.out.println("Du kommst zu einer Brücke. Ein Troll steht dort und stellt dir folgendes Rätsel:" + System.lineSeparator()
                 + "Was kann man nicht sehen aber hören und fühlen." + "\n");
         System.out.println("Wähle deine Antwort" + System.lineSeparator()
-                + "1. Babys" + System.lineSeparator()
-                + "2. Ziegen" + System.lineSeparator()
+                + "1. Baby" + System.lineSeparator()
+                + "2. Ziege" + System.lineSeparator()
                 + "3. Was soll denn diese scheiß Rätselß Piss dich du Opfer" + System.lineSeparator()
                 + "4. Der Wind" + "\n");
         System.out.println("Wofür entscheidest du dich?");
@@ -115,16 +116,16 @@ public class AdventureLetsGo {
         while (line == null) {
             line = scan();
 
-            if (line.contains("1") || (line.contains("eins"))) {
+            if (line.contains("1") || line.contains("eins") || line.contains("baby")) {
                 karma += 1;
                 System.out.println("Wow bist du dumm, na dann geh mal weiter, mal sehen wie du dich schlägst!" + "\n");
-            } else if (line.contains("2") || (line.contains("zwei"))) {
+            } else if (line.contains("2") || line.contains("zwei") || line.contains("ziege")) {
                 karma -= 1;
                 System.out.println("Interessante wahl, aber leider falsch.");
-            } else if (line.contains("3") || (line.contains("drei"))) {
+            } else if (line.contains("3") || line.contains("drei") || line.contains("piss dich")) {
                 karma -= 5;
                 System.out.println("Wenn du keine Lust auf Rätsel hast, dann wird dies eine sehr beschwerliche Reise!" + "\n");
-            } else if (line.contains("4") || (line.contains("vier"))) {
+            } else if (line.contains("4") || line.contains("vier") || line.contains("wind")) {
                 karma += 5;
                 System.out.println("Du hast das Rätsel bestanden. Willst du unserem Trollclub beitreten?" + "\n");
 
