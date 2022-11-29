@@ -173,10 +173,10 @@ public class AdventureLetsGo {
         while (line == null) {
             line = scan();
 
-            if (line.contains("rein")) {
+            if (line.contains("rein") || line.contains("1") || line.contains("hinein")) {
                 System.out.println("Du gehst hinein!" + "\n");
                 weaponChoice();
-            } else if (line.contains("herum")) {
+            } else if (line.contains("rum") || line.contains("2")) {
                 System.out.println("Du gehst herum." + "\n");
             } else {
                 line = null;
@@ -199,13 +199,13 @@ public class AdventureLetsGo {
         while (line == null) {
             line = scan();
 
-            if (line.contains("1")) {
+            if (line.contains("1") || line.contains("bogen")) {
                 weapon = 1;
                 System.out.println("Du nimmst den Bogen!" + "\n");
-            } else if (line.contains("2")) {
+            } else if (line.contains("2") || line.contains("axt")) {
                 weapon = 2;
                 System.out.println("Du nimmst die Axt." + "\n");
-            } else if (line.contains("0")) {
+            } else if (line.contains("0") || line.contains("kein")  || line.contains("nicht")) {
                 karma += 2;
                 weapon = 3;
                 System.out.println("Du entschiedest dich den weg eines Pazifisten zu gehen." + "\n");
@@ -234,18 +234,18 @@ public class AdventureLetsGo {
         while (line == null) {
             line = scan();
 
-            if (line.contains("1")) {
+            if (line.contains("1")  || line.contains("helfen")) {
                 karma += 1;
                 System.out.println("Du befreist die Prinzessin, sie bedankt sich!" + "\n");
-            } else if (line.contains("2")) {
+            } else if (line.contains("2") || line.contains("egal")) {
                 karma -= 1;
                 fatherHate = true;
                 System.out.println("Du gehst einfach weg, was mit der Prinzessin geschieht ist dir egal." + "\n");
-            } else if (line.contains("3") || line.contains("umdrehen") || line.contains("zurück")) {
+            } else if (line.contains("3") || line.contains("beleidigen") || line.contains("arschloch")) {
                 karma -= 5;
                 fatherHate = true;
                 System.out.println("Du drehst dich um, die Prinzessin weint, in ihrem Jammer, befreit sie sich selbst und rennt davon." + "\n");
-            } else if (line.contains("4")) {
+            } else if (line.contains("4") || line.contains("flirten") || line.contains("schön")) {
                 karma += 2;
                 love = true;
                 System.out.println("Die Prinzessin verliebt sich in dich und geht glücklich davon." + "\n");
@@ -265,7 +265,7 @@ public class AdventureLetsGo {
                 + "Er fragt dich 'wo ist eigentlich mein Gold mein Freund?'" + "\n");
         System.out.println("Antwort" + System.lineSeparator()
                 + "1. Hier dein Gold" + System.lineSeparator()
-                + "2. Hab ich nich" + System.lineSeparator()
+                + "2. Hab ich nicht" + System.lineSeparator()
                 + "3. clevere Ausrede, mit der du versuchst deinen Freund zu verarschen" + "\n");
 
         String line = null;
@@ -273,12 +273,12 @@ public class AdventureLetsGo {
         while (line == null) {
             line = scan();
 
-            if (line.contains("1")) {
+            if (line.contains("1") || line.contains("geben")) {
                 System.out.println("Du gibst deinem Freund das Gold und er bedankt sich" + "\n");
-            } else if (line.contains("2")) {
+            } else if (line.contains("2") || line.contains("nicht")) {
                 System.out.println("Du hast das Gold nicht." + System.lineSeparator()
                         + "'Keine Sorge, gib es mir einfach sobald du es hast'" + "\n");
-            } else if (line.contains("3") || line.contains("umdrehen") || line.contains("zurück")) {
+            } else if (line.contains("3") || line.contains("verarschen") || line.contains("ausrede")) {
                 System.out.println("Du versuchst deinen Freund zu verarschen." + System.lineSeparator()
                         + "'Du denkst du spielst Schach, aber du spielst kein Schach Digger. Du spielst Schach gegen dich selber!'" + "\n");
             } else {
@@ -321,7 +321,7 @@ public class AdventureLetsGo {
                 System.out.println(kind
                         ? "Du warnst die Prinzessin und sie kann ein stück vom Drachen entkommen" + "\n"
                         : "Die Prinzessin bemerkt dich und macht einen Schritt von dir weg. Sie tritt dem Drachen auf den Fuß und dieser frisst sie" + "\n");
-            } else if (line.contains("nein") || line.contains("no") || line.contains("2")) {
+            } else if (line.contains("nein") || line.contains("no") || line.contains("2") || line.contains("nicht")) {
                 karma -= 5;
                 System.out.println("Die Prinzessin bemerkt dich nicht, aber leider auch nicht den Drachen. Sie ist in großer Gefahr!" + "\n");
             } else {
@@ -346,12 +346,12 @@ public class AdventureLetsGo {
         while (drachline == null) {
             drachline = scan();
 
-            if (drachline.contains("ja") || drachline.contains("yes") || drachline.contains("1")) {
+            if (drachline.contains("ja") || drachline.contains("yes") || drachline.contains("1") || line.contains("angriff")) {
                 karma += 1;
                 System.out.println(karma > 5
                         ? "Du erschlägst den Drachen" + "\n"
                         : "Der Drache frisst dich" + "\n");
-            } else if (drachline.contains("nein") || drachline.contains("no") || drachline.contains("2")) {
+            } else if (drachline.contains("nein") || drachline.contains("no") || drachline.contains("2") || line.contains("rückzug")) {
                 karma -= 1;
                 System.out.println("Der Drache schlägt nach dir." + "\n");
                 if (karma < 0) {
