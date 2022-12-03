@@ -69,8 +69,9 @@ public class AdventureLetsGo {
     }
 
     public static String scan() {
-        Scanner scan = new Scanner(System.in);
-        return scan.nextLine().toLowerCase();
+        try (Scanner scan = new Scanner(System.in)) {
+            return scan.nextLine().toLowerCase();
+        }
     }
 
     static void crossroad() {
